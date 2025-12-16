@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>Sign In - Modèle Exact</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
 <div class="card">
-  <div class="avatar">👤</div>
-  <h2>Sign In</h2>
+    <div class="avatar-container">
+        <i class='bx bxs-user-circle'></i>
+    </div>
+    
+    <h2>Sign In</h2>
 
-  <div class="input-group">
-    <input type="email" id="email" placeholder="Email">
-  </div>
+    <div class="input-row">
+        <div class="icon-square"><i class='bx bxs-user'></i></div>
+        <div class="input-field">
+            <input type="text" id="email" placeholder="Username / Email">
+        </div>
+    </div>
 
-  <div class="input-group">
-    <input type="password" id="password" placeholder="Password">
-  </div>
+    <div class="input-row">
+        <div class="icon-square"><i class='bx bxs-lock-alt'></i></div>
+        <div class="input-field">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+    </div>
 
-  <div class="options">
-    <label><input type="checkbox"> Remember me</label>
-    <a href="#">Forgot password?</a>
-  </div>
+    <div class="footer-options">
+        <label><input type="checkbox"> Remember me</label>
+        <a href="#">Forgot password?</a>
+    </div>
 
-  <button onclick="login()">LOGIN</button>
+    <button class="btn-login" onclick="login()">LOGIN</button>
 
-  <div class="switch">
-    Don't have an account? <a href="register.html">Sign Up</a>
-  </div>
+    <div class="signup-text">
+        Don't have an account? <a href="register.html">Sign up!</a>
+    </div>
 </div>
 
 <script src="../js/auth.js"></script>

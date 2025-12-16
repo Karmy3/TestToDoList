@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Style Parfait</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<div class="card">
+    <div class="avatar-container">
+        <i class='bx  bxs-user' style='color:#ffffff'></i> 
+    </div>
+    
+    <h2>Sign Up</h2>
+
+    <div class="input-row">
+        <div class="icon-square">
+          <i class='bx  bxs-user' style='color:#ffffff'></i> 
+        </div>
+        <div class="input-field">
+            <input type="text" id="name" placeholder="Full name">
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="icon-square">
+          <i class='bx  bxs-envelope-alt' style='color:#ffffff'></i> 
+        </div>
+        <div class="input-field">
+            <input type="email" id="email" placeholder="Email address">
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="icon-square">
+          <i class='bx  bxs-lock-keyhole' style='color:#ffffff'></i>
+        </div>
+        <div class="input-field">
+            <input type="password" id="password" placeholder="Create Password">
+        </div>
+    </div>
+
+    <button class="btn-login" onclick="register()">REGISTER</button>
+
+    <div class="signup-text">
+        Already have an account? <a href="login.html">Sign In</a>
+    </div>
+</div>
+
+<script src="../js/auth.js"></script>
+</body>
+</html>

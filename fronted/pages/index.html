@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/index.css">
+  <title>Journal Intime - Tasks</title>
+</head>
+<body>
+  <div class="sidebar">
+    <div style="color:white; margin-top:20px;">📅</div>
+  </div>
+
+  <div class="main-content">
+    <h1>Hello, Good Morning</h1>
+    
+    <div class="task-container">
+      <h3>Tasks in Progress</h3>
+      <div id="in-progress-list"></div>
+    </div>
+
+    <hr style="border: 0.5px solid #ccc; margin: 40px 0;">
+
+    <div class="task-container completed-section">
+      <h3>Completed Tasks</h3>
+      <div id="completed-list"></div>
+    </div>
+  </div>
+
+  <button class="add-btn-fixed" onclick="location.href='add.task.html'">+</button>
+
+  <script src="../js/tasks.js"></script>
+</body>
+</html>
