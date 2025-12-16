@@ -15,14 +15,65 @@ body {
 
 /* Sidebar façon journal */
 .sidebar {
-  width: 100px;
-  background: linear-gradient(-150deg, #0bbbe2, #9b30ff, #c503d6);;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  position: fixed;
+    width: 120px;
+    height: 100vh;
+    background: linear-gradient(-150deg, #0bbbe2, #9b30ff, #c503d6);;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+    position: fixed;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.nav-item {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.6);
+    transition: 0.3s;
+}
+
+.nav-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.nav-count {
+    font-size: 12px;
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.nav-item.active {
+    color: #FFFFFF;
+}
+
+.nav-item.active .active-indicator {
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.sidebar-top-icon i, .sidebar-bottom-icon i {
+    color: white;
+    font-size: 28px;
 }
 
 .main-content {

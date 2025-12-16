@@ -3,12 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../css/index.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>Journal Intime - Tasks</title>
 </head>
 <body>
   <div class="sidebar">
-    <div style="color:white; margin-top:20px;">📅</div>
-  </div>
+    <div class="sidebar-top-icon">
+        <i class='bx  bx-edit' style='color:#ffffff'></i> 
+    </div>
+
+    <div class="nav-links">
+        <div class="nav-item" onclick="loadTasks('all')">
+            <span class="nav-text">All</span>
+            <span class="nav-count" id="count-all">0</span>
+        </div>
+
+        <div class="nav-item active" onclick="loadTasks('todo')">
+            <span class="nav-text">In progress</span>
+            <span class="nav-count" id="count-progress">0</span>
+            <div class="active-indicator"></div> </div>
+
+        <div class="nav-item" onclick="loadTasks('done')">
+            <span class="nav-text">Completed</span>
+            <span class="nav-count" id="count-completed">0</span>
+        </div>
+    </div>
+
+    <div class="sidebar-bottom-icon">
+        <i class='bx bxs-home-alt-2'></i>
+    </div>
+</div>
 
   <div class="main-content">
     <h1>Hello, Good Morning</h1>
