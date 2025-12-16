@@ -1,0 +1,90 @@
+:root {
+  --primary-brown: #6F4E37;
+  --bg-beige: #F5F1ED;
+  --card-light: #FFFFFF;
+  --text-dark: #3E2723;
+  --gray-completed: #D7D1CB;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-beige);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+}
+
+/* Sidebar façon journal */
+.sidebar {
+  width: 100px;
+  background: linear-gradient(-150deg, #0bbbe2, #9b30ff, #c503d6);;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+}
+
+.main-content {
+  margin-left: 100px;
+  padding: 40px;
+  width: 100%;
+}
+
+h1, h2 { color: #9b30ff; }
+
+/* Task Cards */
+.task-container {
+  margin-bottom: 40px;
+}
+
+.task-card {
+  background: var(--card-light);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+/* Style spécifique pour les tâches terminées */
+.completed-section .task-card {
+  background: var(--gray-completed);
+  opacity: 0.7;
+}
+
+.completed-section h4 {
+  text-decoration: line-through;
+  color: #777;
+}
+
+/* Boutons d'action */
+.btn-action {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+
+.add-btn-fixed {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(45deg, #0bbbe2, #7f30ff, #c503d6);;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.add-btn-fixed:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
