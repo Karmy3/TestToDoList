@@ -1,31 +1,21 @@
 const API_URL = "http://localhost:5000/api/tasks";
 const token = localStorage.getItem('token');
 
-// Fonction pour charger et afficher les tâches
 async function loadTasks() {
-    if (!token) {
-        window.location.href = "login.html";
-        return;
-    }
+    if (!token) { window.location.href = "login.html"; return; }
 
     try {
         const res = await fetch(API_URL, {
-            headers: { 'Authorization': `Bearer ${token}` } // Correction : Ajout de Bearer
+            headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        if (!res.ok) {
-            console.error("Erreur d'autorisation ou serveur :", res.status);
+        if (res.status === 403 || res.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = "login.html";
             return;
         }
 
         const tasks = await res.json();
-
-        // Correction : On vérifie que tasks est bien un tableau (Array)
-        if (!Array.isArray(tasks)) {
-            console.error("Format de données invalide reçu du serveur");
-            return;
-        }
-
         const inProgressList = document.getElementById('in-progress-list');
         const completedList = document.getElementById('completed-list');
         
@@ -33,14 +23,13 @@ async function loadTasks() {
         completedList.innerHTML = '';
 
         tasks.forEach(task => {
-            // Correspondance avec tes statuts MongoDB ("Completed" ou "In Progress")
             const isCompleted = task.status === 'Completed';
-
             const html = `
                 <div class="task-card ${isCompleted ? 'task-done' : ''}">
                     <div class="task-content">
                         <h4>${task.name}</h4>
                         <p>${task.description || ''}</p>
+                        <small>Priority: ${task.priority}</small>
                     </div>
                     <div class="task-actions">
                         <button onclick="toggleStatus('${task._id}', '${task.status}')">
@@ -50,48 +39,32 @@ async function loadTasks() {
                     </div>
                 </div>
             `;
-
-            if (isCompleted) {
-                completedList.innerHTML += html;
-            } else {
-                inProgressList.innerHTML += html;
-            }
+            if (isCompleted) completedList.innerHTML += html;
+            else inProgressList.innerHTML += html;
         });
-    } catch (error) {
-        console.error("Erreur réseau :", error);
-    }
+    } catch (error) { console.error("Erreur réseau :", error); }
 }
 
-// Changer le statut (In Progress <-> Completed)
 async function toggleStatus(id, currentStatus) {
     const newStatus = currentStatus === 'Completed' ? 'In Progress' : 'Completed';
-    try {
-        await fetch(`${API_URL}/${id}`, {
-            method: 'PUT',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` 
-            },
-            body: JSON.stringify({ status: newStatus })
-        });
-        loadTasks();
-    } catch (err) {
-        console.error("Erreur update status:", err);
-    }
+    await fetch(`${API_URL}/${id}/status`, { // Correction de l'URL
+        method: 'PUT',
+        headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` 
+        },
+        body: JSON.stringify({ status: newStatus })
+    });
+    loadTasks();
 }
 
-// Supprimer une tâche
 async function deleteTask(id) {
-    if(confirm("Supprimer définitivement cette tâche ?")) {
-        try {
-            await fetch(`${API_URL}/${id}`, {
-                method: 'DELETE',
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            loadTasks();
-        } catch (err) {
-            console.error("Erreur delete:", err);
-        }
+    if(confirm("Supprimer ?")) {
+        await fetch(`${API_URL}/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        loadTasks();
     }
 }
 
